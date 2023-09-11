@@ -45,6 +45,7 @@ function addLineHandler () {
       const para = document.createElement("p")
       const textNode =  document.createTextNode(completeLine) 
       para.appendChild(textNode)
+      //displayElement.innerHTML = para
  } 
  if (iLineCounter > 9) {
     alert("Max Number of Lines Reached")
@@ -64,7 +65,7 @@ arrLines.push(
 function removeLineHandler() {
     if(isValid = true) {
         function removeChild () {
-
+            
         }
 
     }else if (isValid = false) {
