@@ -42,8 +42,8 @@ function addLineHandler () {
             completeColour = generateRandomColour()            
         }
         
-      const para = document.getElementById("display-el")
-      const textNode =  document.createTextNode(completeLine + "\r") 
+      const para = document.createElement("p")
+      const textNode =  document.createTextNode(completeLine) 
       para.appendChild(textNode)
  } 
  if (iLineCounter > 9) {
@@ -51,7 +51,6 @@ function addLineHandler () {
     document.getElementById("AddLLine").style.visibility = "hidden"
  }
 
-displayElement.style.color = completeColour
 arrLines.push(
     {text: completeLine, colour: completeColour, isVisible: true}
 )
