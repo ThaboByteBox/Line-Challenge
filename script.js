@@ -41,12 +41,16 @@ function addLineHandler () {
             completeLine = generateRandomText()
             completeColour = generateRandomColour()            
         }
-        
-      const para = document.createElement("p")
-      const textNode =  document.createTextNode(completeLine) 
-      para.appendChild(textNode)
-      //displayElement.innerHTML = para
- } 
+        const para = document.createElement("p")
+        const display = document.getElementById("display-el")
+        para.style.color = completeColour
+        const textNode =  document.createTextNode(completeLine) 
+        para.appendChild(textNode)
+        display.append(para)
+       
+      
+  } 
+     
  if (iLineCounter > 9) {
     alert("Max Number of Lines Reached")
     document.getElementById("AddLLine").style.visibility = "hidden"
@@ -55,26 +59,22 @@ function addLineHandler () {
 arrLines.push(
     {text: completeLine, colour: completeColour, isVisible: true}
 )
-
-//console.log(arrLines)
+   // console.log(arrLines)
     }
 
 /**
  *  Removes the lastChild added to the HTML display element
  */
 function removeLineHandler() {
-    if(isValid = true) {
-        function removeChild () {
-            
-        }
-
-    }else if (isValid = false) {
-        function removeChild() {
-            
-        }
-    }
+  arrLines.pop()
+  let display =document.getElementById("display-el")
+  display.removeChild(display.lastElementChild)
+  iLineCounter -1 
+  //console.log(arrLines)
 }
 
 function ResetPage () {
-displayElement.textContent = ""
+ let resetPage =  document.getElementById("display-el")
+ resetPage.innerHTML = ""
+ iLineCounter = 0
 }
