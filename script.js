@@ -53,7 +53,7 @@ function addLineHandler () {
      
  if (iLineCounter > 9) {
     alert("Max Number of Lines Reached")
-    document.getElementById("AddLLine").style.visibility = "hidden"
+    document.getElementById("AddLine").style.visibility = "hidden"
  }
 
 arrLines.push(
@@ -69,7 +69,8 @@ function removeLineHandler() {
   arrLines.pop()
   let display =document.getElementById("display-el")
   display.removeChild(display.lastElementChild)
-  iLineCounter -1 
+  iLineCounter-- 
+  document.getElementById("AddLine").style.visibility = "visible"
   //console.log(arrLines)
 }
 
@@ -77,4 +78,5 @@ function ResetPage () {
  let resetPage =  document.getElementById("display-el")
  resetPage.innerHTML = ""
  iLineCounter = 0
+ document.getElementById("AddLine").style.visibility = "visible"
 }
