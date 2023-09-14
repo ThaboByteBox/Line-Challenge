@@ -81,7 +81,14 @@ function ResetPage () {
 }
 
 function restorePage() {
+    i = 0
+    let arrContent = ""
     let arrDisplay = document.getElementById("display-array")
-
-    arrDisplay.innerHTML = Object.values(arrLines["text"])
+    for (i = 0; i < arrLines.length; i++) {
+    arrContent = arrLines[i]["text"]
+    //console.log(arrContnent)
+    arrDisplay.innerHTML = arrContent
+    }
+    
+    
 } 
