@@ -1,6 +1,6 @@
 let iLineCounter = 0
 const arrLines = [
-    {text: "0osxiag4xkli", colour: "#9C9245", isVisible: true}
+    {"text": "0osxiag4xkli", "colour": "#9C9245", isVisible: true}
 ]
 let isValid = true
 let displayElement = document.getElementById("display-el")
@@ -15,7 +15,7 @@ function addLineHandler () {
     let completeColour = ""
  /**
  * @returns randomly generated colour using hex codes
- */     if (iLineCounter <= 9) {
+ */     if (iLineCounter < 10) {
         isValid = true
         if (isValid = true) {
             function generateRandomColour (){
@@ -66,10 +66,9 @@ arrLines.push(
  *  Removes the lastChild added to the HTML display element
  */
 function removeLineHandler() {
-  arrLines.pop()
   let display =document.getElementById("display-el")
   display.removeChild(display.lastElementChild)
-  iLineCounter-- 
+  iLineCounter -- 
   document.getElementById("AddLine").style.visibility = "visible"
   //console.log(arrLines)
 }
@@ -80,3 +79,9 @@ function ResetPage () {
  iLineCounter = 0
  document.getElementById("AddLine").style.visibility = "visible"
 }
+
+function restorePage() {
+    let arrDisplay = document.getElementById("display-array")
+
+    arrDisplay.innerHTML = Object.values(arrLines["text"])
+} 
