@@ -84,19 +84,23 @@ function restorePage() {
     i = 0
     let arrLastContent = ""
   
-
-    arrLastContent = arrLines[-1]["text"]
+for (arrLastContent in arrLines) {
+   arrLastContent = arrLines[arrLastContent]["text"]
+}
     //console.log(arrContnent)
-    displayElement.textContent += arrLastContent
+   displayElement.textContent = arrLastContent
     document.getElementById("restore").style.visibility = "hidden"
     }     
 
 
 function printArray() {
     let arrDisplay = document.getElementById("display-array")
+    let arrContent = ""
     for (i = 0; i < arrLines.length; i++) {
-        let arrContent = arrLines[i]["text"]
+         arrContent = arrLines[i]["text"] 
+         arrDisplay.innerHTML = arrContent   
     }
+    
 
-    arrDisplay.text = arrContent
+    
 }
