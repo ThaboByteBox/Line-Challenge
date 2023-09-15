@@ -82,13 +82,21 @@ function ResetPage () {
 
 function restorePage() {
     i = 0
-    let arrContent = ""
+    let arrLastContent = ""
+  
+
+    arrLastContent = arrLines[-1]["text"]
+    //console.log(arrContnent)
+    displayElement.textContent += arrLastContent
+    document.getElementById("restore").style.visibility = "hidden"
+    }     
+
+
+function printArray() {
     let arrDisplay = document.getElementById("display-array")
     for (i = 0; i < arrLines.length; i++) {
-    arrContent = arrLines[i]["text"]
-    //console.log(arrContnent)
-    arrDisplay.innerHTML = arrContent
+        let arrContent = arrLines[i]["text"]
     }
-    
-    
-} 
+
+    arrDisplay.text = arrContent
+}
