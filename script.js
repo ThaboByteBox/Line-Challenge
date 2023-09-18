@@ -11,44 +11,16 @@ let displayElement = document.getElementById("display-el")
  */
 function addLineHandler () {
     iLineCounter ++
-    let completeLine = ""
-    let completeColour = ""
- /**
- * @returns randomly generated colour using hex codes
- */     if (iLineCounter < 10) {
+      if (iLineCounter < 10) {
         isValid = true
-        if (isValid = true) {
-            function generateRandomColour (){
-                const colourHexCharacters = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"]
-               
-                function getRandomColourCharacter (iColour) {
-                    return colourHexCharacters[iColour]
-                }
-            let colourRep = "#"
-            for (let iColour = 0; iColour < 6; iColour ++) {
-                const randomColour = Math.floor(Math.random() * colourHexCharacters.length)
-                colourRep += getRandomColourCharacter(randomColour)
-            }
-            return colourRep
-            }
-    /**
-     * @returns randomly generated text 
-     */
-            function generateRandomText () {
-                let randomText = (Math.random()).toString(36).replace(".","")
-                return randomText
-            }
-            completeLine = generateRandomText()
-            completeColour = generateRandomColour()            
+        if (isValid = true) {            
         }
         const para = document.createElement("p")
         const display = document.getElementById("display-el")
-        para.style.color = completeColour
-        const textNode =  document.createTextNode(completeLine) 
+        para.style.color = generateRandomColour()
+        const textNode =  document.createTextNode(generateRandomText()) 
         para.appendChild(textNode)
-        display.append(para)
-       
-      
+        display.append(para)    
   } 
      
  if (iLineCounter > 9) {
@@ -59,7 +31,32 @@ function addLineHandler () {
 arrLines.push(
     {text: completeLine, colour: completeColour, isVisible: true}
 )
-   // console.log(arrLines)
+    }
+
+
+/**
+ * @returns randomly generated colour using hex codes
+ */
+    function generateRandomColour (){
+        const colourHexCharacters = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"]
+       
+        function getRandomColourCharacter (iColour) {
+            return colourHexCharacters[iColour]
+        }
+    let colourRep = "#"
+    for (let iColour = 0; iColour < 6; iColour ++) {
+        const randomColour = Math.floor(Math.random() * colourHexCharacters.length)
+        colourRep += getRandomColourCharacter(randomColour)
+    }
+    return colourRep
+    }
+
+    /**
+     * @returns randomly generated text 
+     */
+    function generateRandomText () {
+        let randomText = (Math.random()).toString(36).replace(".","")
+        return randomText
     }
 
 /**
@@ -87,20 +84,23 @@ function restorePage() {
 for (arrLastContent in arrLines) {
    arrLastContent = arrLines[arrLastContent]["text"]
 }
-    //console.log(arrContnent)
    displayElement.textContent = arrLastContent
     document.getElementById("restore").style.visibility = "hidden"
     }     
 
 
 function printArray() {
-    let arrDisplay = document.getElementById("display-array")
-    let arrContent = ""
-    for (i = 0; i < arrLines.length; i++) {
-         arrContent = arrLines[i]["text"] 
-         arrDisplay.innerHTML = arrContent   
-    }
-    
+  for (arrCounter = 0; arrCounter < arrLines.length; arrCounter++) {
+        loadArray()
+  }  
 
-    
+}
+ let arrCounter = 0
+function loadArray () {
+
+    let arrDisplay = document.getElementById("display-array")  
+    const para = document.createElement("div")
+    const textnode = document.createTextNode(arrLines[arrCounter]["text"])
+    para.appendChild(textnode)
+    arrDisplay.append(para)
 }
