@@ -1,0 +1,7 @@
+#display-area{
+    display: flex;
+    flex-direction: row;
+}
+#display-array {
+    padding-left: 20px;
+}

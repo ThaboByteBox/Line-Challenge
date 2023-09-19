@@ -9,15 +9,19 @@
 
 </head>
 <body>
-    <div id="display-el"></div>
+    <div id="display-area">
+        <div id="display-el"></div>
+        <div id="display-array"></div>
+    </div>
+   
     <div id="user-input-buttons-area">
-    <p id="display-array"></p>
-    <button id="AddLine" onclick="addLineHandler()">Add Line</button>
-    <button id="RemoveLine" onclick="removeLineHandler()">Remove Line</button>
-    <button id="restore" onclick="restorePage()">Restore</button>
-    <button id="printarray" onclick="printArray()">Print Array</button>
-    <button id="ResetPage" onclick="ResetPage()">Rest Page</button>
-    <button type="reset" onclick="location.href='https://thabo.bytebox.co.za/'">
+   
+        <button id="AddLine" onclick="addLineHandler()">Add Line</button>
+        <button id="RemoveLine" onclick="removeLineHandler()">Remove Line</button>
+        <button id="restore" onclick="restoreLastArray()">Restore</button>
+        <button id="printarray" onclick="printArray()">Print Array</button>
+        <button id="ResetPage" onclick="ResetPage()">Rest Page</button>
+        <button type="reset" onclick="location.href='https://thabo.bytebox.co.za/'">
         Home</button>
     </div>
     <script src="script.js"></script>

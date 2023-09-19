@@ -4,6 +4,8 @@ const arrLines = [
 ]
 let isValid = true
 let displayElement = document.getElementById("display-el")
+document.getElementById("restore").style.visibility = "hidden"
+document.getElementById("printarray").style.visibility = "hidden"
 /**
  * @returns fully randomised line of text with randomised colour and adds it to the HTML display element and
  * keeps track if the max number of entries have been added, max number being 9, disables the button if max number is
@@ -11,16 +13,19 @@ let displayElement = document.getElementById("display-el")
  */
 function addLineHandler () {
     iLineCounter ++
+    let completeLine = generateRandomText()
+    let completeColour = generateRandomColour()
       if (iLineCounter < 10) {
         isValid = true
         if (isValid = true) {            
         }
+        
         const para = document.createElement("p")
-        const display = document.getElementById("display-el")
-        para.style.color = generateRandomColour()
-        const textNode =  document.createTextNode(generateRandomText()) 
+        displayElement = document.getElementById("display-el")
+        para.style.color = completeColour
+        const textNode =  document.createTextNode(completeLine) 
         para.appendChild(textNode)
-        display.append(para)    
+        displayElement.append(para)    
   } 
      
  if (iLineCounter > 9) {
@@ -31,6 +36,8 @@ function addLineHandler () {
 arrLines.push(
     {text: completeLine, colour: completeColour, isVisible: true}
 )
+document.getElementById("restore").style.visibility = "visible"
+//console.log(arrLines)
     }
 
 
@@ -67,6 +74,7 @@ function removeLineHandler() {
   display.removeChild(display.lastElementChild)
   iLineCounter -- 
   document.getElementById("AddLine").style.visibility = "visible"
+  document.getElementById("restore").style.visibility = "visible"
   //console.log(arrLines)
 }
 
@@ -74,18 +82,26 @@ function ResetPage () {
  let resetPage =  document.getElementById("display-el")
  resetPage.innerHTML = ""
  iLineCounter = 0
+ document.getElementById("display-array").innerHTML = ""
  document.getElementById("AddLine").style.visibility = "visible"
+ document.getElementById("restore").style.visibility = "hidden"
 }
 
-function restorePage() {
+function restoreLastArray() {
     i = 0
-    let arrLastContent = ""
+   
+
   
-for (arrLastContent in arrLines) {
-   arrLastContent = arrLines[arrLastContent]["text"]
-}
-   displayElement.textContent = arrLastContent
+    const arrLastContent = arrLines[arrLines.length -1]["text"]
+   //displayElement.textContent = arrLastContent
+    const para = document.createElement("div")
+    const textNode = document.createTextNode(arrLastContent)
+    para.appendChild(textNode)
+    displayElement.append(para)
+    para.style.color = arrLines[arrLines.length -1]["colour"]
     document.getElementById("restore").style.visibility = "hidden"
+    //console.log(arrLastContent)
+    //console.log(arrLines)
     }     
 
 
