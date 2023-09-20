@@ -5,27 +5,28 @@ const arrLines = [
 let isValid = true
 let displayElement = document.getElementById("display-el")
 document.getElementById("restore").style.visibility = "hidden"
-document.getElementById("printarray").style.visibility = "hidden"
+let completeLine = ""
+let completeColour = ""
+
+//document.getElementById("printarray").style.visibility = "hidden"
 /**
  * @returns fully randomised line of text with randomised colour and adds it to the HTML display element and
  * keeps track if the max number of entries have been added, max number being 9, disables the button if max number is
  * reach
  */
 function addLineHandler () {
-    iLineCounter ++
-    let completeLine = generateRandomText()
-    let completeColour = generateRandomColour()
+   
+     completeLine = generateRandomText()
+     completeColour = generateRandomColour()
       if (iLineCounter < 10) {
         isValid = true
-        if (isValid = true) {            
+        if (isValid = true) {
+        iLineCounter ++            
+       loadCompleteLine()
+       
         }
         
-        const para = document.createElement("p")
-        displayElement = document.getElementById("display-el")
-        para.style.color = completeColour
-        const textNode =  document.createTextNode(completeLine) 
-        para.appendChild(textNode)
-        displayElement.append(para)    
+         
   } 
      
  if (iLineCounter > 9) {
@@ -64,6 +65,15 @@ document.getElementById("restore").style.visibility = "visible"
     function generateRandomText () {
         let randomText = (Math.random()).toString(36).replace(".","")
         return randomText
+    }
+
+    function loadCompleteLine () {
+        const para = document.createElement("p")
+        displayElement = document.getElementById("display-el")
+        para.style.color = completeColour
+        const textNode =  document.createTextNode(completeLine) 
+        para.appendChild(textNode)
+        displayElement.append(para) 
     }
 
 /**
@@ -113,10 +123,9 @@ function printArray() {
 }
  let arrCounter = 0
 function loadArray () {
-
-    let arrDisplay = document.getElementById("display-array")  
+ 
     const para = document.createElement("div")
     const textnode = document.createTextNode(arrLines[arrCounter]["text"])
     para.appendChild(textnode)
-    arrDisplay.append(para)
+    displayElement.append(para)
 }
